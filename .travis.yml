@@ -6,7 +6,7 @@ notifications:
     on_success: change
     on_failure: always
 rvm:
-  - 2.3.3
+  - 2.5.1
 services:
   - postgresql
 script:
