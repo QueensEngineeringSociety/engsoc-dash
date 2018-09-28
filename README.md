@@ -1,41 +1,21 @@
 # Engineering Society Dashboard
 
-[![Build Status](https://travis-ci.org/RobertWSaunders/engsoc-dash.svg?branch=master)](https://travis-ci.org/RobertWSaunders/engsoc-dash) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-
+[![Build Status](https://travis-ci.org/RobertWSaunders/engsoc-dash.svg?branch=master)](https://travis-ci.org/RobertWSaunders/engsoc-dash)
 
 Engineering Society Dashboard is a central place that engineering students at Queen's University can come to manage various different aspects of their life as a student. Engineering Society Dashboard is the vision of Robert Saunders, Director of Information Technology (2016-2017). The long term goal of Engineering Society Dashboard is to serve as a place for students to apply for jobs, find tutors, attend conferences, join design teams, view events and manage their course work.
 
 ## Contributing
 
+A general guide to contribute in this repository is:
+
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
+2. Create your feature branch: `git checkout -b feature/my-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request
+4. Push to the branch: `git push origin feature/my-feature`
+5. Submit a pull request :rocket:
 
-## Testing
-
-Use the command `bundle exec rspec` to run the suite.
-
-## Versioning
-
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-### Version History
-
-* No versions have been released.
-
-## Authors
-
-* **Robert Saunders** - *Initial work* - [Robert Saunders](https://github.com/RobertWSaunders)
-* **Peter Ju** - *Initial work* - [Peter Ju](https://github.com/peterj35)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## Acknowledgments
-
-* Engineering Society Executive and Director Team (2016-2017)
-  - For extensive support on the vision and development of the application.
+> See more information in our [contributing
+> guide](https://github.com/RobertWSaunders/engsoc-dash/blob/dev/CONTRIBUTING.md).
 
 ## License
 
