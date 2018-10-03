@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -47,7 +49,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   config.action_mailer.preview_path = "#{Rails.root}/test/mailers/previews"
-  host = 'localhost:3000'                     # Local server
+  host = 'localhost:3000' # Local server
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   # Use an evented file watcher to asynchronously detect changes in source code,

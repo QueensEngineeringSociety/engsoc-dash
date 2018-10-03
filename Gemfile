@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -30,38 +32,39 @@ gem 'jbuilder', '~> 2.5'
 # Use ion icons throughout the application
 gem 'ionicons-rails'
 # Use font awesome throughtout the application
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 # Used in centric javascript library
-gem "jquery-validation-rails"
+gem 'jquery-validation-rails'
 # Used in centric javascript library
 gem 'rails-jquery-steps'
 # Fixes binding events caused by turbolinks
 gem 'jquery-turbolinks'
 # Used in centric
-gem "select2-rails"
+gem 'select2-rails'
 # Use cancancan for authorization within the application
 gem 'cancancan'
 # use pagination for various different views
+gem 'figaro'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-gem 'figaro'
 # Calendar for interviews
 gem 'simple_calendar', '~> 2.0'
 # for uploading resumes & validating their size
 gem 'carrierwave'
 gem 'carrierwave-i18n'
 gem 'file_validators'
+gem 'rubocop', require: false
 # Generate fake users & posts - this should be in dev test env...
-gem 'faker',          '~> 1.7.3'
 gem 'byebug', platform: :mri
+gem 'faker', '~> 1.7.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'rspec-rails', '~> 3.6'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 # gems only for development enviroment
@@ -81,4 +84,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

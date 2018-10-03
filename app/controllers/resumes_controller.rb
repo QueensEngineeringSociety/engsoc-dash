@@ -1,5 +1,6 @@
-class ResumesController < ApplicationController
+# frozen_string_literal: true
 
+class ResumesController < ApplicationController
   load_and_authorize_resource
   before_action :set_resume
 
@@ -22,7 +23,7 @@ class ResumesController < ApplicationController
       redirect_to profile_resumes_path
     else
       flash[:warning] = "Resume <em>#{@resume.name}</em> did not upload properly. Please make sure you have attached a file of the right format (PDF, DOC, DOCx) of under 2MB, and that you have given it a name, and try again."
-      render "index"
+      render 'index'
     end
   end
 
@@ -30,18 +31,18 @@ class ResumesController < ApplicationController
   def destroy
     resume = Resume.find(params[:id])
     resume.destroy
-    flash[:success] = "Resume Successfully Deleted"
+    flash[:success] = 'Resume Successfully Deleted'
     redirect_to profile_resumes_path
   end
 
   private
 
-    def resume_params
-      params.require(:resume).permit(:name, :attachment, :user_id)
-    end
+  def resume_params
+    params.require(:resume).permit(:name, :attachment, :user_id)
+  end
 
-    def set_resume
-      @user = User.find(params[:profile_id])
-      @resumes = @user.resumes.all
-    end
+  def set_resume
+    @user = User.find(params[:profile_id])
+    @resumes = @user.resumes.all
+  end
 end

@@ -1,5 +1,6 @@
-class AttachmentUploader < CarrierWave::Uploader::Base
+# frozen_string_literal: true
 
+class AttachmentUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -41,7 +42,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
 
   # depending on carrierwave version
   def extension_whitelist
-    %w(pdf doc docx)
+    %w[pdf doc docx]
   end
 
   # Override the filename of the uploaded files:
@@ -49,5 +50,4 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
