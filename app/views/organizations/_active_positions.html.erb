@@ -6,7 +6,7 @@
           <%= link_to pos.job.title.titleize, job_path(:id => job.id) %>
         </td>
         <td>
-          <%= link_to pos.user.first_name + " " + pos.user.last_name, profile_path(pos.user.id) %>
+          <%= link_to pos.user.first_name.to_s + " " + pos.user.last_name.to_s, profile_path(pos.user.id) %>
         </td>
         <td>
           <%= pos.user.email %>

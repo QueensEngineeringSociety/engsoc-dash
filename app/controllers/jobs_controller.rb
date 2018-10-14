@@ -78,7 +78,7 @@ class JobsController < ApplicationController
       if @position.save
         user = User.find(@position.user_id)
         job = Job.find(@position.job_id)
-        flash[:success] = user.first_name + ' ' + user.last_name + ' assigned as ' + job.title + ' from ' + @position.start_date.to_date.to_s + ' to ' + @position.end_date.to_date.to_s
+	flash[:success] = user.first_name.to_s + ' ' + user.last_name.to_s + ' assigned as ' + job.title.to_s + ' from ' + @position.start_date.to_date.to_s + ' to ' + @position.end_date.to_date.to_s
         redirect_to :back
       else
         flash.keep[:danger] = 'Could Not Save Position'

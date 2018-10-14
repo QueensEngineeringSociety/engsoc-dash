@@ -40,7 +40,7 @@
                 <tr>
                   <td><%= interview.job_application.id %></td>
                   <td><%= link_to interview.job_application.job_posting.title, interview.job_application.job_posting %></td>
-                  <td><%= link_to interview.job_application.user.first_name + " " + interview.job_application.user.last_name, interview.job_application %></td>
+                  <td><%= link_to interview.job_application.user.first_name.to_s + " " + interview.job_application.user.last_name.to_s, interview.job_application %></td>
                   <td><%= interview.start_time.strftime("%b %e, %l:%M %p") %></td>
                   <td><%= interview.end_time.strftime("%b %e, %l:%M %p") %></td>
                   <td>
