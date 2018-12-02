@@ -37,6 +37,7 @@ class Organization < ApplicationRecord
     information_technology
     engineering_review_board
     directors
+    year executive
   ]
 
   # db declaration defaults to 0
@@ -46,7 +47,7 @@ class Organization < ApplicationRecord
   # make sure the name is present and is unique
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   # make sure the email is present and is unique
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true
   # set bounds and make sure unique description
   validates :description, presence: true, length: { minimum: 10, maximum: 4000 }
   validates :department, presence: true
