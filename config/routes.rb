@@ -1,20 +1,21 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   # Take advantage of shallow routing wherever possible:
   # :index, :new, :create should be nested with parent resource
   # :show, :edit, :update, :destroy should be unnested
 
-  root                     "static_pages#home"
-  get   'about'        =>  "static_pages#about"
-  get   'contact'      =>  "static_pages#contact"
-  get   'develop'      =>  "static_pages#develop"
+  root                     'static_pages#home'
+  get   'about'        =>  'static_pages#about'
+  get   'contact'      =>  'static_pages#contact'
+  get   'develop'      =>  'static_pages#develop'
 
   ####################################################
   # Profiles
   # devise routes for authentication
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: 'registrations' }
-  resources :profiles, :controller => 'users' do
-    resources :resumes, only: [:index, :create, :destroy]
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'registrations' }
+  resources :profiles, controller: 'users' do
+    resources :resumes, only: %i[index create destroy]
     get 'settings'
   end
 
@@ -35,12 +36,12 @@ Rails.application.routes.draw do
       post 'organizations', to: 'organizations#filter_index'
       post 'user', to: 'organizations#filter_user'
     end
-    resources :jobs, only: [:new, :create]
+    resources :jobs, only: %i[new create]
   end
 
   ####################################################
   # Jobs
-  resources :jobs, only: [:show, :edit, :update, :destroy] do
+  resources :jobs, only: %i[show edit update destroy] do
     member do
       get 'assign'
       post 'create_position'
@@ -49,9 +50,9 @@ Rails.application.routes.draw do
   end
 
   resources :job_postings do
-    resources :job_posting_questions, only: [:index, :create, :update, :destroy]
-    resources :job_applications, only: [:index, :new, :create] do
-      resource :job_posting_answers, only: [:new, :create]
+    resources :job_posting_questions, only: %i[index create update destroy]
+    resources :job_applications, only: %i[index new create] do
+      resource :job_posting_answers, only: %i[new create]
     end
     member do
       get 'approve'
@@ -70,8 +71,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :job_applications, only: [:show, :update, :destroy] do
-    resource :job_posting_answers, only: [:edit, :update, :destroy]
+  resources :job_applications, only: %i[show update destroy] do
+    resource :job_posting_answers, only: %i[edit update destroy]
     resources :interviews, only: [:new]
     member do
       get 'select_resume'
@@ -86,7 +87,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :interviews, only: [:create, :edit, :update] do
+  resources :interviews, only: %i[create edit update] do
     collection do
       get 'manage'
       get 'admin'
@@ -98,6 +99,4 @@ Rails.application.routes.draw do
       get 'admin'
     end
   end
-
-
 end
