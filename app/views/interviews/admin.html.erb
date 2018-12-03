@@ -16,7 +16,7 @@
                     <h3><%= link_to int.job_application.job_posting.job.organization.name, int.job_application.job_posting.job.organization %></h3>
                     <h4><%= link_to int.job_application.job_posting.title, int.job_application.job_posting %> - <%= link_to "View Job", int.job_application.job_posting.job %></h4>
                     <h3 class="mv-lg">
-                      With <%= link_to int.job_application.user.first_name + " " + int.job_application.user.last_name, profile_path(int.job_application.user) %> / <%= link_to "Application", int.job_application %>
+                      With <%= link_to int.job_application.user.first_name.to_s + " " + int.job_application.user.last_name.to_s, profile_path(int.job_application.user) %> / <%= link_to "Application", int.job_application %>
                     </h3>
                     <p>
                       <%= int.start_time.strftime('%A, %B %d, %l:%M %p, %Y') %> - <%= int.end_time.strftime('%A, %B %d, %l:%M %p, %Y') %>
