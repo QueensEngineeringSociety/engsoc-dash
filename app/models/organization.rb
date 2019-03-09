@@ -38,6 +38,7 @@ class Organization < ApplicationRecord
     engineering_review_board
     directors
     year executive
+    social_issues
   ]
 
   # db declaration defaults to 0
