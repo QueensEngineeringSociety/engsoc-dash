@@ -1,6 +1,6 @@
 <tr>
   <td class="col-md-2">
-    <%= link_to position.user.first_name + " " + position.user.last_name, profile_path(position.user.id) %>
+    <%= link_to position.user.first_name.to_s + " " + position.user.last_name.to_s, profile_path(position.user.id) %>
   </td>
   <td class="col-md-2">
     <%= position.user.email %>
