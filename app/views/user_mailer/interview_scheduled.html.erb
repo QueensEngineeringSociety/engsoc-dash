@@ -14,10 +14,10 @@
         Hi <%= @user.first_name %> <%= @user.last_name %>,
       </p>
       <p>
-        You have been scheduled for an interview for the position <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %> organization.
+        You have been scheduled for an interview for <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %>.
       </p>
       <p>
-        The interview is to be conducted at the following time:
+        The interview is scheduled at the following time:
         <br>
         <em>
           <%= @job_application.interview.start_time.strftime("%A, %d %b at %l:%M %p") %> to <%= @job_application.interview.end_time.strftime("%I:%M %p") %>.
@@ -25,7 +25,7 @@
       </p>
       <br>
       <p>
-        Please be at the ILC Student Lounge 15 minutes earlier than your scheduled time.
+        Please wait in the ILC Student Lounge (unless otherwise specified by the hiring panel) 15 minutes before your scheduled time.
       </p>
       <p>
         Should you have any questions about the interview, or would like to reschedule, please email <%= mail_to @job_application.job_posting.job.organization.email %>.
@@ -35,6 +35,9 @@
       </p>
       <p>
         Best of luck on your interview!
+      </p>
+      <p>
+        <i>Please note that all EngSoc hiring is done according to EngSoc Hiring Policy as seen in Section Gamma of the EngSoc Policy Manual available on our website under "About - Government - Governing Documents".</i>
       </p>
     </div>
     <div class="quick-links">
