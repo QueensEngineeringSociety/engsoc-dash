@@ -14,7 +14,7 @@
         Hi <%= @user.first_name %> <%= @user.last_name %>,
       </p>
       <p>
-        Your interview for the position <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %> organization, has been rescheduled.
+        Your interview for <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %>, has been rescheduled.
       </p>
       <p>
         The new interview time is:
@@ -32,6 +32,9 @@
       </p>
       <p>
         Best of luck on your interview!
+      </p>
+      <p>
+        <i>Please note that all EngSoc hiring is done according to EngSoc Hiring Policy as seen in Section Gamma of the EngSoc Policy Manual available on our website under "About - Government - Governing Documents".</i>
       </p>
     </div>
     <div class="quick-links">
