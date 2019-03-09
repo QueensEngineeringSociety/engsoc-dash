@@ -14,13 +14,16 @@
         Hi <%= @user.first_name %> <%= @user.last_name %>,
       </p>
       <p>
-        We're very sorry to let you know that your application for <%= @job_application.job_posting.title %>, for the <%= @job_application.job_posting.job.organization.name %> organization, has been declined at this time.
+        We're very sorry to let you know that your application for <%= @job_application.job_posting.title %>, for <%= @job_application.job_posting.job.organization.name %>, has been declined at this time.
       </p>
       <p>
         Should you have any questions regarding the job application, interviewing, and candidate selection process, please email <%= mail_to @job_application.job_posting.job.organization.email %>.
       </p>
       <p>
-        We hope you will continue applying to more positions within EngSoc, and beyond.
+        We hope you will continue applying to more positions within EngSoc in the future!
+      </p>
+      <p>
+        <i>Please note that all EngSoc hiring is done according to EngSoc Hiring Policy as seen in Section Gamma of the EngSoc Policy Manual available on our website under "About - Government - Governing Documents". If you have any concerns about the interview process and want to speak confidentially with someone, you can e-mail the Engineering Review Board at erb@engsoc.queensu.ca or drop a sealed envelope labeled “ERB” into the EngSoc mailbox. You will receive a response within 48 hours.</i>
       </p>
     </div>
     <div class="quick-links">
