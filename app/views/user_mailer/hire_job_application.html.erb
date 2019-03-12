@@ -14,7 +14,7 @@
         Hi <%= @user.first_name %> <%= @user.last_name %>,
       </p>
       <p>
-        Congratulations! You have been hired to the job <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for the <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %> organization.
+        Congratulations! You have been hired for <%= link_to @job_application.job_posting.job.title, @job_application.job_posting.job %>, for <%= link_to @job_application.job_posting.job.organization.name, @job_application.job_posting.job.organization %>.
       </p>
       <br>
       <p>
@@ -28,10 +28,13 @@
       </p>
       <br>
       <p>
-        Should you have any questions about the job, please send them to <%= mail_to @job_application.job_posting.job.organization.email %>.
+        Should you have any questions about the job, please send them to <%= mail_to @job_application.job_posting.job.organization.email %>. You should hear back from your supervisor in the next few days to organize your transitions into your role.
       </p>
       <p>
         Best of luck on your new job within EngSoc, and beyond!
+      </p>
+      <p>
+        <i>Please note that all EngSoc hiring is done according to EngSoc Hiring Policy as seen in Section Gamma of the EngSoc Policy Manual available on our website under "About - Government - Governing Documents". If you have any concerns about the interview process and want to speak confidentially with someone, you can e-mail the Engineering Review Board at erb@engsoc.queensu.ca or drop a sealed envelope labeled “ERB” into the EngSoc mailbox. You will receive a response within 48 hours.</i>
       </p>
     </div>
     <div class="quick-links">
