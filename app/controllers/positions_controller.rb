@@ -26,7 +26,7 @@ class PositionsController < ApplicationController
   def destroy
     @position = Position.find(params[:id])
     @position.destroy
-    flash[:success] = 'Position ' + @position.job.title + ' held by ' + @position.user.first_name + ' ' + @position.user.last_name + ' has been successfully deleted.'
+    flash[:success] = 'Position ' + @position.job.title.to_s + ' held by ' + @position.user.first_name.to_s + ' ' + @position.user.last_name.to_s + ' has been successfully deleted.'
     redirect_to admin_positions_path
   end
 
