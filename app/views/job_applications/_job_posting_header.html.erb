@@ -3,12 +3,7 @@
     <%= link_to @job_posting.title, @job_posting %>
   </p>
   <p>
-    Application Deadline:
-    <% if @jobposting.deadline.past? %>
-          <%= @jobposting.deadline.to_date %>
-        <% else %>
-          in <%= distance_of_time_in_words(Time.now, @jobposting.deadline) %> (<%= @jobposting.deadline.to_date %>)
-        <% end %>
+    Application Deadline: <%= distance_of_time_in_words(Time.now, @job_posting.deadline) %> (<%= @job_posting.deadline.to_date %>)
   </p>
   <p>
     Organization: <%= link_to @job_posting.job.organization.name, @job_posting.job.organization %>
