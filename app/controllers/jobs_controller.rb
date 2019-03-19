@@ -27,8 +27,8 @@ class JobsController < ApplicationController
       redirect_to assign_job_path(@job.id)
     else
       flash.keep[:danger] = 'Could Not Save Job!'
-      flash[:danger] << '<li>' + @job.errors.full_messages.join('</li><li>')
-      flash[:danger] << '</ul>'
+      flash[:danger] += '<li>' + @job.errors.full_messages.join('</li><li>')
+      flash[:danger] += '</ul>'
       redirect_to new_organization_job_path
     end
   end
@@ -82,8 +82,8 @@ class JobsController < ApplicationController
         redirect_to :back
       else
         flash.keep[:danger] = 'Could Not Save Position'
-        flash[:danger] << '<li>' + @position.errors.full_messages.join('</li><li>')
-        flash[:danger] << '</ul>'
+        flash[:danger] += '<li>' + @position.errors.full_messages.join('</li><li>')
+        flash[:danger] += '</ul>'
         redirect_to assign_job_path
       end
     end
