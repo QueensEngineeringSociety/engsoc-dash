@@ -105,8 +105,8 @@ class JobPostingsController < ApplicationController
       redirect_to job_posting_job_posting_questions_path(@jobposting.id)
     else
       flash[:danger] = 'Could Not Update Job Posting!'
-      flash[:danger] << '<li>' + @jobposting.errors.full_messages.join('</li><li>')
-      flash[:danger] << '</ul>'
+      flash[:danger] += '<li>' + @jobposting.errors.full_messages.join('</li><li>')
+      flash[:danger] += '</ul>'
       redirect_to edit_job_posting_path(@jobposting)
     end
   end
