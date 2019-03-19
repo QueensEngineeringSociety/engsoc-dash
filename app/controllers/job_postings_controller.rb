@@ -64,8 +64,8 @@ class JobPostingsController < ApplicationController
       redirect_to job_posting_job_posting_questions_path(@jobposting.id)
     else
       flash[:danger] = 'Could not create Job Posting <ul>'
-      flash[:danger] << '<li>' + @jobposting.errors.full_messages.join('</li><li>')
-      flash[:danger] << '</ul>'
+      flash[:danger] += '<li>' + @jobposting.errors.full_messages.join('</li><li>')
+      flash[:danger] += '</ul>'
       # render :new
       redirect_to action: 'new', job_id: @jobposting.job_id
     end
