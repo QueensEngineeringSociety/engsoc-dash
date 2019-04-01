@@ -13,6 +13,7 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 # Use devise for user authentication
 gem 'devise'
+gem 'bcrypt', '~> 3.1.12'
 # add bootstrap for styling
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use Puma as the app server
