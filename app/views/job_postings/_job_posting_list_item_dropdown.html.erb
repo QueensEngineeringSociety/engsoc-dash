@@ -19,11 +19,17 @@
           <li>
             <%= link_to "Begin Interviewing", interview_job_posting_path(posting) %>
           </li>
+          <li>
+            <%= link_to "Close Job Posting", close_job_posting_path(posting) %>
+          </li>
         <% end %>
       <% else %>
         <% if posting.status == "open" %>
           <li>
             <%= link_to "Begin Interviewing", interview_job_posting_path(posting) %>
+          </li>
+          <li>
+            <%= link_to "Close Job Posting", close_job_posting_path(posting) %>
           </li>
         <% else %>
           <li>
