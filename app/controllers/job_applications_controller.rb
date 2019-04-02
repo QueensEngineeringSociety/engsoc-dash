@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class JobApplicationsController < ApplicationController
+  include UserHelper
   load_and_authorize_resource
 
   skip_authorize_resource only: %i[filter_index filter filter_user]
@@ -11,6 +12,11 @@ class JobApplicationsController < ApplicationController
   # GET /job_postings/:job_posting_id/job_applications
   def index
     @job_posting = JobPosting.find(params[:job_posting_id])
+		#Checking to make sure the user accessing is either admin or manager of the organization
+    if !superadmin?(current_user) && !managed_orgs(current_user).include?(@job_posting.job.organization)
+	    flash[:warning] = "You don't have the permission to do that."
+	    redirect_to root_path
+		end
     @submitted_job_applications = @job_posting.job_applications.where(status: 'submitted').where.not(archived: true)
     @interviewing_job_applications = @job_posting.job_applications.where(status: 'interview_scheduled').where.not(archived: true)
     @hired_job_applications = @job_posting.job_applications.where(status: 'hired').where.not(archived: true)
