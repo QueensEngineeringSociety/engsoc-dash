@@ -59,6 +59,12 @@ test:
   <<: *default
   database: engsoc-dash_test
 
+  # the same name as the operating system user that initialized the database.
+  username: postgres
+
+  # The password associated with the postgres role (username).
+  password: 123
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.

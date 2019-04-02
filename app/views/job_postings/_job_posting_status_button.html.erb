@@ -4,7 +4,7 @@
 		<em class="ion-android-checkmark-circle icon-lg mr-sm"></em>Begin Interviewing
 	  <% end %>
 	<% else %>
-	  <%= link_to close_job_posting_path(posting), class: "btn btn-primary", :"data-html" => "true", :"data-toggle" => "popover", :"data-content" => "Close the job posting, and decline all applicants who were not hired.<br /><br /> Select this after the job has been filled and only after you are done all interviews.", :"data-title" => "Closing a Job Posting", :"data-trigger" => "hover", :"data-placement" => "auto", data: { :confirm => "Are you sure you're finished with this job posting? IF YOU INTEND TO START INTERVIEWS CLICK CANCEL." } do %>
+	  <%= link_to close_job_posting_path(posting), class: "btn btn-primary", :"data-html" => "true", :"data-toggle" => "popover", :"data-content" => "Close the job posting, and decline all applicants who were not hired.<br /><br /> Select this after the job has been filled and only after you are done all interviews.", :"data-title" => "Closing a Job Posting", :"data-trigger" => "hover", :"data-placement" => "auto", data: { :confirm => "Are you sure you want to close this job posting? All applicants not hired will be rejected if you press OK. IF YOU ARE NOT DONE WITH INTERVIEWS, PRESS CANCEL." } do %>
 	    <em class="ion-android-checkmark-circle icon-lg mr-sm"></em>Close Job Posting
 	  <% end %>
 	<% end %>
