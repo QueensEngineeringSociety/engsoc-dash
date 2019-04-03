@@ -21,6 +21,7 @@ class JobApplicationsController < ApplicationController
     @interviewing_job_applications = @job_posting.job_applications.where(status: 'interview_scheduled').where.not(archived: true)
     @hired_job_applications = @job_posting.job_applications.where(status: 'hired').where.not(archived: true)
     @declined_job_applications = @job_posting.job_applications.where(status: 'declined').where.not(archived: true)
+    @draft_job_applications = @job_posting.job_applications.where(status: 'draft').where.not(archived: true)
     @archived_job_applications = @job_posting.job_applications.where(archived: true).order('id').reverse_order
   end
 

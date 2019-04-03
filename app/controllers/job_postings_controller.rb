@@ -153,7 +153,7 @@ class JobPostingsController < ApplicationController
     flash[:success] = 'Job Posting Successfully Closed'
     @jobposting.status = 'closed'
 
-    not_hired = @jobposting.job_applications.where.not(status: 'hired')
+    not_hired = @jobposting.job_applications.where.not(status: 'hired', status: 'draft')
     not_hired.each do |nh|
       if nh.status == 'submitted'
         UserMailer.decline_job_application(nh).deliver_now
