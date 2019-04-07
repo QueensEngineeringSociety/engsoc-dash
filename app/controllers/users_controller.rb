@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     	@users = User
 			.where("UPPER(\"users\".\"first_name\") LIKE UPPER(:query) OR
 				UPPER(\"users\".\"last_name\") LIKE UPPER(:query)",
-				{:query => "%#{params[:query]}%"})
+				{query: "%#{params[:query]}%"})
 			.paginate(page: params[:page], per_page: 30)
 			.order(:last_name)
     end

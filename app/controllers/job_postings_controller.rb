@@ -22,7 +22,7 @@ class JobPostingsController < ApplicationController
       .where(status: 'open', jobs: { id: @active_org_jobs.ids })
 			.where("UPPER(\"jobs\".\"title\") LIKE UPPER(:query) OR
 				UPPER(\"jobs\".\"description\") LIKE UPPER(:query)",
-				{:query => "%#{params[:query]}%"})
+				{query: "%#{params[:query]}%"})
       .filter(params.slice(:job_type, :job_department))
       .order(:deadline)
       .paginate(page: params[:page], per_page: 10)
