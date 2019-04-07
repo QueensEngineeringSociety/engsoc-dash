@@ -13,16 +13,20 @@ class JobPostingsController < ApplicationController
   # define the helper for the controller
   helper :application
 
-  # GET /job_postings
+  # GET /job_postings?query=:search_query
   def index
     @active_org_jobs = Job.joins(:organization).where(organizations: { status: 'active' })
     @open_job_postings =
       JobPosting
       .joins(:job)
       .where(status: 'open', jobs: { id: @active_org_jobs.ids })
+			.where("UPPER(\"jobs\".\"title\") LIKE UPPER(:query) OR
+				UPPER(\"jobs\".\"description\") LIKE UPPER(:query)",
+				{:query => "%#{params[:query]}%"})
       .filter(params.slice(:job_type, :job_department))
       .order(:deadline)
       .paginate(page: params[:page], per_page: 10)
+		# @test = generate_search_string("hello")
   end
 
   # GET /job_postings/new?job_id=:id

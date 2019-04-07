@@ -21,6 +21,18 @@
     </div>
   </div>
 
+	<!-- Search Bar -->
+	<div class="card">
+		<form action="/job_postings" name="search_form" method="get" class="card-body">
+			<table style="width:128%">
+				<tr>
+			    <th><input type="text" id="query" name="query" style="width:98%" placeholder="Search" class="form-control"></th>
+					<th><button type="submit" class="btn btn-primary">Search</button></th>
+				</tr>
+			</table>
+		</form>
+	</div>
+
   <div class="card">
     <div class="card-body">
         <% if @open_job_postings.any? %>
