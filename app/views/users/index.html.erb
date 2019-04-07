@@ -1,6 +1,18 @@
 <% content_for :title, "Admin Users" %>
 
-<!-- main container for job postings -->
+<!-- Search Bar -->
+<div class="card">
+	<form action="/profiles" name="search_form" method="get" class="card-body">
+		<table style="width:128%">
+			<tr>
+				<th><input type="text" id="query" name="query" style="width:98%" placeholder="Search" class="form-control"></th>
+				<th><button type="submit" class="btn btn-primary">Search</button></th>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<!-- main container for users -->
 <div class="container-fluid container-lg">
   <div class="card">
     <table class="table table-hover table-fixed va-middle">
