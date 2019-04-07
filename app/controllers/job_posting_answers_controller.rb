@@ -21,7 +21,7 @@ class JobPostingAnswersController < ApplicationController
     elsif @job_application.job_posting_answers.exists?
       redirect_to edit_job_application_job_posting_answers_path
     end
-    @all_questions = @job_posting.job_posting_questions.all
+    @all_questions = @job_posting.job_posting_questions.all.order(:created_at)
     @page_answers = []
     @job_posting.job_posting_questions.count.times do
       @page_answers << JobPostingAnswer.new
