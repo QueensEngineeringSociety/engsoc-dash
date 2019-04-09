@@ -17,10 +17,11 @@ class JobApplicationsController < ApplicationController
 	    flash[:warning] = "You don't have the permission to do that."
 	    redirect_to root_path
 		end
-    @submitted_job_applications = @job_posting.job_applications.where(status: 'submitted').where.not(archived: true)
-    @interviewing_job_applications = @job_posting.job_applications.where(status: 'interview_scheduled').where.not(archived: true)
-    @hired_job_applications = @job_posting.job_applications.where(status: 'hired').where.not(archived: true)
-    @declined_job_applications = @job_posting.job_applications.where(status: 'declined').where.not(archived: true)
+    @submitted_job_applications = @job_posting.job_applications.where(status: 'submitted').where.not(archived: true).order(:created_at)
+    @interviewing_job_applications = @job_posting.job_applications.where(status: 'interview_scheduled').where.not(archived: true).order(:created_at)
+    @hired_job_applications = @job_posting.job_applications.where(status: 'hired').where.not(archived: true).order(:created_at)
+    @declined_job_applications = @job_posting.job_applications.where(status: 'declined').where.not(archived: true).order(:created_at)
+    @draft_job_applications = @job_posting.job_applications.where(status: 'draft').where.not(archived: true).order(:created_at)
     @archived_job_applications = @job_posting.job_applications.where(archived: true).order('id').reverse_order
   end
 

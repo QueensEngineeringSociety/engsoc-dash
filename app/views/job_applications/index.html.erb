@@ -25,6 +25,9 @@
   <%= render "job_applications_table", applications: @interviewing_job_applications%>
   <%= render "job_applications_table", applications: @submitted_job_applications%>
   <%= render "job_applications_table", applications: @declined_job_applications%>
+	<% if @job_posting.status == "closed" %>
+		<%= render "job_applications_table", applications: @draft_job_applications %>
+	<% end %>
 
   <% if !@submitted_job_applications.any? && !@hired_job_applications.any? && !@declined_job_applications.any? %>
     <div class="">
