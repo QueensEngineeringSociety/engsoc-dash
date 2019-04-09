@@ -1,6 +1,19 @@
 <!-- page title -->
 <% content_for :title, "All Organizations" %>
 
+<!-- Search Bar -->
+<div class="card">
+	<form action="/organizations" name="search_form" method="get" class="card-body">
+		<table style="width:128%">
+			<tr>
+				<th><input type="text" id="query" name="query" style="width:98%" placeholder="Search" class="form-control"></th>
+				<th><button type="submit" class="btn btn-primary">Search</button></th>
+			</tr>
+		</table>
+	</form>
+</div>
+
+
 <!-- page container -->
 <div class="container-fluid container-lg">
 
