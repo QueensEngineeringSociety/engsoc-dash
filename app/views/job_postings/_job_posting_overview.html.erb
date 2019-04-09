@@ -5,12 +5,7 @@
   <%= posting.title %>
 </h5>
 <p>
-  Application Deadline:
-	<% if Time.now < posting.deadline %>
-		<%= distance_of_time_in_words(Time.now, posting.deadline) %> (<%= posting.deadline.to_date.strftime('%A, %B %d, %l:%M %p, %Y') %>)
-	<% else %>
-		<%= distance_of_time_in_words(Time.now, posting.deadline) %> ago (<%= posting.deadline.to_date.strftime('%A, %B %d, %l:%M %p, %Y') %>) <b>Please Click Begin Interviewing</b>
-	<% end %>
+  Application Deadline: <%= distance_of_time_in_words(Time.now, posting.deadline) %> (<%= posting.deadline.to_date.strftime('%A, %B %d, %l:%M %p, %Y') %>)
 </p>
 <p>
   Organization: <%= link_to posting.job.organization.name, posting.job.organization %>
