@@ -37,7 +37,7 @@ class Organization < ApplicationRecord
     information_technology
     engineering_review_board
     directors
-    year executive
+    year_executive
     social_issues
   ]
 
