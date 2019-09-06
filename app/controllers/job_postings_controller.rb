@@ -13,7 +13,7 @@ class JobPostingsController < ApplicationController
   # define the helper for the controller
   helper :application
 
-  # GET /job_postings?query=:search_query
+  # GET /job_postings
   def index
     @active_org_jobs = Job.joins(:organization).where(organizations: { status: 'active' })
     @open_job_postings =
@@ -26,7 +26,6 @@ class JobPostingsController < ApplicationController
       .filter(params.slice(:job_type, :job_department))
       .order(:deadline)
       .paginate(page: params[:page], per_page: 10)
-		# @test = generate_search_string("hello")
   end
 
   # GET /job_postings/new?job_id=:id
@@ -93,7 +92,7 @@ class JobPostingsController < ApplicationController
 
   # GET /job_postings/:id/edit
   def edit
-    if @jobposting.status != 'waiting_approval'
+    if @jobposting.status != 'waiting_approval' && @jobposting.status != 'draft' && @jobposting.status != 'closed'
       flash[:danger] = "The Job Posting is currently not 'waiting approval', so cannot be created, deleted, or editted. Approval must first be revoked for the posting to be editable. Please contact an administrator if you require assistance."
       redirect_back(fallback_location: job_postings_path)
     else
