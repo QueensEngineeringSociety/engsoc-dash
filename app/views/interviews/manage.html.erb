@@ -45,7 +45,7 @@
                 </ul>
               </div>
 
-              <% if @interviewing_postings.count > 9 %>
+              <% if @interviewing_postings.count > 99 %>
                 <!-- show the paginator for the will_paginate gem -->
                 <center><%= will_paginate @open_job_postings, renderer: BootstrapPagination::Rails, page_links: false %><br /></center>
               <% end %>
