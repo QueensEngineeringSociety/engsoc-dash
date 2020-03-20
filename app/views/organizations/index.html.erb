@@ -5,19 +5,24 @@
 <div class="container-fluid container-lg">
 
   <!-- filtering header -->
-  <div class="row mb">
-    <div class="col-sm-12 text-right hidden-xs">
-      <%= form_tag({controller: "organizations", action: "filter_index"}, method: "post", class:"form-inline") do %>
-        <div class="form-group">
-          <% select_list = Organization.departments.keys.map { |w| [w.titleize, w] }.insert(0,"All") %>
-          <%= label_tag 'Department', nil, class: 'mr' %>
-          <%= select_tag :department, options_for_select(select_list, params[:department]), class: "form-control input-sm" %>
-          <%= submit_tag 'Filter', class: "ml btn btn-inverse" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <div class="row">
+  <!-- Searchbar and Department Dropdown box -->
+	  <form action="/organizations" name="search_form" method="get" class="card-body">
+        <table style="width:97%" align="center">
+          <p1 style="padding-left: 1.5%">Search by Keyword or Department</p1>
+			<th width="60%" style="padding-right: 10px;"><input type="text" id="query" name="query" style="font-size: 10pt; height: 95%; margin: 0%" placeholder="Keyword" class="form-control" size="62%%" autocomplete="on" ></th>
+        <th width="30%" style="padding-left: 10px; padding-right: 10px"><% select_list = Organization.departments.keys.map { |w| [w.titleize, w] }.insert(0,"") %>
+          <%= select_tag :department, options_for_select(select_list, params[:department]), class: "form-control input-sm" %></th>
+          <th width="10%" style="padding-left: 10px"><div align="right"><button type="submit" class="btn btn-primary" style="width: 100%">Search</button></div></th>
+		  </tr>
+	    </table>
+      </form>
 
+  </div>
+  
+  <!-- line break to help format page -->
+  <br>
+  
   <!-- main container for job postings -->
     <div class="card">
       <div class="card-body">

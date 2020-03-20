@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations
   def index
-    @organizations = Organization.where(status: 'active').filter(params.slice(:department)).paginate(page: params[:page], per_page: 20)
+    @organizations = Organization.where(status: 'active').where("UPPER(\"organizations\".\"name\") LIKE UPPER(:query) OR UPPER(\"organizations\".\"description\") LIKE UPPER(:query)", {query: "%#{params[:query]}%"}).filter(params.slice(:department)).paginate(page: params[:page], per_page: 20)
   end
 
   # GET /organizations/new
