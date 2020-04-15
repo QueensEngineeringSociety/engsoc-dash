@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
+#This controller is for Admin->Positions which allows an admin to manage position information for job postings. Positions are created by organizations
+#See views/positions for the html
+
 class PositionsController < ApplicationController
   load_and_authorize_resource
 
   # GET /positions/admin
+  #Admin shows all of the different positions and organizations and allows you to click on them to edit them.
   def admin
     @organizations = Organization.all
     @positions = Position.all.joins(:job).order('jobs.organization_id').reverse_order
   end
 
   # PUT /positions/edit
+  #For when a position is edited and saved (i.e. updated)
   def update
     position = Position.find(position_params[:id])
     if position.update_attributes(position_params)
@@ -23,6 +28,7 @@ class PositionsController < ApplicationController
   end
 
   # DESTROY /positions/:id
+  #For deleting positions
   def destroy
     @position = Position.find(params[:id])
     @position.destroy

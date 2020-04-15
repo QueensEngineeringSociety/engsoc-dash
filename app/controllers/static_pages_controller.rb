@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class StaticPagesController < ApplicationController
+  #controls the home page, and the about/contact pages (found in bottom right of site)
   def home
     # p request.headers
     @email = request.headers['HTTP_EMAIL']
@@ -15,5 +16,6 @@ class StaticPagesController < ApplicationController
 
   def contact; end
 
+  #I think credit refers to the development page
   def credits; end
 end
