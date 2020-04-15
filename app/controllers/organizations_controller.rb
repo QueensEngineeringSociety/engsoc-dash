@@ -8,16 +8,20 @@ class OrganizationsController < ApplicationController
   before_action :set_organization, only: %i[show destroy edit update approve withdraw archive]
 
   # GET /organizations
+  #Shows the list of organizations. If the searchbar/separtment dropdown menu is used then it filters other organizations out
+  #index is for the regular organizations tab (admin is if accessed through admin tab)
   def index
     @organizations = Organization.where(status: 'active').where("UPPER(\"organizations\".\"name\") LIKE UPPER(:query) OR UPPER(\"organizations\".\"description\") LIKE UPPER(:query)", {query: "%#{params[:query]}%"}).filter(params.slice(:department)).paginate(page: params[:page], per_page: 20)
   end
 
   # GET /organizations/new
+  #When you do Admin->Organizations->Create Organization
   def new
     @organization = Organization.new
   end
 
   # POST /organizations
+  #Once an admin actually creates the new organization this is run
   def create
     @organization = Organization.new(organization_params)
     if @organization.save
@@ -29,6 +33,7 @@ class OrganizationsController < ApplicationController
   end
 
   # GET /organizations/:id
+  #When an organization is clicked, whether it's through the admin or regular tab
   def show
     if @organization.status != 'active' && !superadmin(current_user)
       flash[:danger] = 'This organization is currently not open (has not been approved or has been archived), and therefore cannot be viewed. Please contact support if you feel this has been done in error.'
@@ -38,11 +43,13 @@ class OrganizationsController < ApplicationController
   end
 
   # GET /organizations/:id/edit
+  #When you click on the three dots->edit for an organization
   def edit
     @organization = Organization.find(params[:id])
   end
 
   # PUT /organizations/:id
+  #When the organization is finished being edited and the edits are saved
   def update
     if @organization.update_attributes(organization_params)
       flash[:success] = 'Organization Successfully Updated!'
@@ -53,6 +60,7 @@ class OrganizationsController < ApplicationController
   end
 
   # DELETE /organizations/:id
+  #To delete the organization
   def destroy
     @organization.destroy
     flash[:success] = 'Organization Successfully Deleted!'
@@ -60,12 +68,15 @@ class OrganizationsController < ApplicationController
   end
 
   # GET /organizations/admin
+  #When organizations are accessed through Admin->Organizations
   def admin
     @organizations = Organization.filter(params.slice(:status, :department)).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /organizations/user
   def user; end
+
+#Approve, withdraw, and archive are for when an admin clicks on the three dots next to the organization name and chooses to change its status
 
   # GET /organizations/:id/approve
   def approve
@@ -88,6 +99,7 @@ class OrganizationsController < ApplicationController
     redirect_to admin_organizations_path
   end
 
+  #Filter is for when the dropdown menu is used to filter the organizations shown
   def filter
     if params[:status] == 'All' && params[:department] == 'All'
       redirect_to admin_organizations_path
