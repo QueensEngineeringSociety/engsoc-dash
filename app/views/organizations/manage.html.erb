@@ -37,7 +37,7 @@
 
       <% if @managed_organizations.count > 9 %>
         <!-- show the paginator for the will_paginate gem -->
-        <center><%= will_paginate @open_job_postings, renderer: BootstrapPagination::Rails, page_links: false %><br /></center>
+        <center><%= will_paginate @managed_organizations, renderer: BootstrapPagination::Rails, page_links: false %><br /></center>
       <% end %>
 
     </div>
