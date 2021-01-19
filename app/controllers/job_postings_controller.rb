@@ -92,7 +92,7 @@ class JobPostingsController < ApplicationController
 
   # GET /job_postings/:id/edit
   def edit
-    if @jobposting.status != 'waiting_approval' && @jobposting.status != 'draft' && @jobposting.status != 'closed'
+    if @jobposting.status != 'waiting_approval' && @jobposting.status != 'draft' && @jobposting.status != 'closed' && @jobposting.status != 'interviewing'
       flash[:danger] = "The Job Posting is currently not 'waiting approval', so cannot be created, deleted, or editted. Approval must first be revoked for the posting to be editable. Please contact an administrator if you require assistance."
       redirect_back(fallback_location: job_postings_path)
     else
